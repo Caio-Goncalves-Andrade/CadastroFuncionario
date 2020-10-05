@@ -2,24 +2,26 @@ import { useState } from 'react';
 import { Funcionario } from '../types/Funcionario';
 import { Service } from '../types/Service';
 
-export type PostFuncionario = Pick<
-  Funcionario,
-  'id' | 'nome' | 'endereco' | 'nascimento' | 'salario' | 'genero'
 
->;
+
+export type PostFuncionario = Pick<Funcionario,
+  'id' | 'nome' | 'endereco' | 'nascimento' | 'salario' | 'genero'>;
 
 const usePostFuncionarioService = () => {
-  const [service, setService] = useState<Service<PostFuncionario>>({
+  const [service, setService] = useState<Service<Funcionario>>({
     status: 'init'
   });
 
-  const publishFuncionario = (funcionario: PostFuncionario) => {
+  const publishFuncionario = (funcionario: Funcionario) => {
     setService({ status: 'loading' });
 
     const headers = new Headers();
     headers.append('Content-Type', 'application/json; charset=utf-8');
 
-    console.log(JSON.stringify(funcionario));
+
+    const myObjStr = JSON.stringify(funcionario.salario);
+    console.log(funcionario);
+    console.log(myObjStr);
 
     return new Promise((resolve, reject) => {
       fetch('https://localhost:5001/api/funcionarios', {

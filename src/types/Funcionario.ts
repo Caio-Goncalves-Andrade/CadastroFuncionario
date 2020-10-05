@@ -3,7 +3,7 @@ export interface Funcionario {
   nome: string;
   endereco: string;
   nascimento: string;
-  salario?: number;
+  salario: number;
   genero: string;
   url: string;
 }

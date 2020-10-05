@@ -6,6 +6,7 @@ import Loader from './Loader';
 const Funcionarios: React.FC<{}> = () => {
   const service = useFuncionariosService();
   const [url, setUrl] = React.useState('');
+  debugger
 
   return (
     <>
@@ -16,8 +17,8 @@ const Funcionarios: React.FC<{}> = () => {
           </div>
         )}
         {service.status === 'loaded' &&
-          service.payload.results &&
-          service.payload.results.map(funcionario => (
+          //service.payload.results &&
+          service.payload.funcionario.map(funcionario => (
             <div
               className="funcionario-item"
               onClick={() => setUrl(funcionario.url)}

@@ -3,7 +3,7 @@ import { Funcionario } from '../types/Funcionario';
 import { Service } from '../types/Service';
 
 export interface Funcionarios {
-  results: Funcionario[];
+  funcionario: Funcionario[];
 }
 
 const useFuncionariosService = () => {

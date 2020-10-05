@@ -1,19 +1,18 @@
 import React from 'react';
-import usePostFuncionarioService, {
-  PostFuncionario
-} from '../services/usePostFuncionarioService';
+import usePostFuncionarioService from '../services/usePostFuncionarioService';
+import { Funcionario } from '../types/Funcionario';
 import Loader from './Loader';
 
 const Createfuncionario: React.FC<{}> = () => {
-  const initialFuncionarioState: PostFuncionario = {
-
+  const initialFuncionarioState: Funcionario = {
+    url: '',
     nome: '',
     endereco: '',
     nascimento: '',
     salario: 0,
     genero: ''
   };
-  const [funcionario, setFuncionario] = React.useState<PostFuncionario>(
+  const [funcionario, setFuncionario] = React.useState<Funcionario>(
     initialFuncionarioState
   );
   const { service, publishFuncionario } = usePostFuncionarioService();
@@ -28,6 +27,10 @@ const Createfuncionario: React.FC<{}> = () => {
 
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    //debugger
+
+    funcionario.salario = Number.parseInt(funcionario.salario.toString())
+
     publishFuncionario(funcionario).then(() => setFuncionario(initialFuncionarioState));
   };
 
